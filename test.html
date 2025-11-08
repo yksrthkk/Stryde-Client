@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stryde Team</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #8b5cf6; /* purple */
+      --secondary: #ec4899; /* pink */
+      --bg: rgba(15, 15, 20, 0.55);
+      --accent-gradient: linear-gradient(90deg, var(--primary), var(--secondary));
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Inter", sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, rgba(10,10,10,0.85), rgba(20,20,20,0.85)), url(bg-minecraft.jpg);
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+           /* Navigation */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: transparent;
+    border: none !important;
+    box-shadow: none !important;
+    backdrop-filter: blur(5px); /* keep frosted glass effect */
+    -webkit-backdrop-filter: blur(5px);
+    z-index: 1000;
+    padding: 1rem 2rem;
+    transition: none;
+}
+
+.nav-links a {
+    color: var(--text-white);
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+}
+
+
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center; /* centers the nav-links */
+            align-items: center;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 5px rgba(139, 92, 246, 0.3)); }
+            to { filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.6)); }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            justify-content: center;
+        }
+
+        .nav-links a {
+            color: var(--text-white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-purple);
+            transform: translateY(-2px);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-gradient);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .country-flag {
+  position: absolute;
+  top: 50%;
+  right: 30px;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+  color: #fff;
+  opacity: 0.85;
+  transition: all 0.3s ease;
+}
+
+.country-flag img {
+  width: 22px;
+  height: 15px;
+  border-radius: 2px;
+  object-fit: cover;
+  box-shadow: 0 0 8px rgba(139, 92, 246, 0.25);
+}
+
+.country-flag:hover {
+  opacity: 1;
+  filter: drop-shadow(0 0 6px rgba(236, 72, 153, 0.6));
+  transform: translateY(-50%) scale(1.05);
+}
+
+
+
+    /* ===== HERO ===== */
+    .hero {
+      text-align: center;
+      padding: 8rem 2rem 4rem;
+    }
+
+    .hero h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      background: var(--accent-gradient);
+      background-clip: unset;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.7rem;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: #d1d1d1;
+      opacity: 0.9;
+    }
+
+    /* ===== ROLE SECTIONS ===== */
+    .role-section {
+      margin-top: 4rem;
+      text-align: center;
+    }
+
+    .role-title {
+      display: inline-block;
+      background: var(--accent-gradient);
+      background-clip: unset;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 800;
+      font-size: 1.4rem;
+      padding: 0.6rem 4rem;
+      border-radius: 8px;
+      margin-bottom: 2.5rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* ===== TEAM GRID ===== */
+    .team-grid {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 3rem;
+      padding: 0 2rem;
+    }
+
+    .member-card {
+      background: transparent;
+      border-radius: 18px;
+      text-align: center;
+      padding: 2rem 1rem;
+      width: 280px;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+    }
+
+    .member-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(168, 85, 247, 0.3);
+    }
+
+    .member-card img {
+      width: 150px;
+      height: auto;
+      margin-bottom: 1.2rem;
+    }
+
+    .member-name {
+      font-weight: 700;
+      font-size: 1.2rem;
+      background: var(--accent-gradient);
+      background-clip: unset;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.4rem;
+    }
+
+    .member-role {
+      font-size: 0.95rem;
+      opacity: 0.85;
+      color: #ccc;
+      margin-bottom: 0.7rem;
+    }
+
+    .member-social {
+      font-size: 0.9rem;
+      color: #aaa;
+      letter-spacing: 0.3px;
+    }
+
+    .member-social span {
+      background: var(--accent-gradient);
+      background-clip: unset;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-right: 0.4rem;
+    }
+
+    footer {
+      text-align: center;
+      color: #bbb;
+      font-size: 0.9rem;
+      padding: 2rem 0;
+      opacity: 0.8;
+      margin-top: 6rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    @media (max-width: 700px) {
+      .member-card {
+        width: 85%;
+      }
+
+      .hero h1 {
+        font-size: 2.4rem;
+      }
+    }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 4rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .features-grid,
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #Store{
+            color: #EC4899;
+        }
+
+        .frosted-glass {
+  background: transparent;
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Hide-on-scroll animation for navbar */
+nav {
+  transition: transform 0.3s ease-in-out;
+}
+
+nav.hide {
+  transform: translateY(-100%);
+}
+
+/* ensure nothing in the card clips SVG */
+.member-card,
+.member-social,
+.discord-link {
+  overflow: visible; /* prevent clipping */
+}
+
+/* control SVG size & alignment */
+.discord-svg {
+  display: inline-block;
+  vertical-align: middle; /* keeps it aligned with text if you add username later */
+  width: 24px;
+  height: 24px;
+  max-width: 100%;
+  max-height: 100%;
+  fill: currentColor; /* lets the link color control the SVG color */
+}
+
+/* color + hover effect */
+.discord-link {
+  color: #5865F2; /* brand color */
+  transition: transform .18s ease, color .18s ease;
+  line-height: 1; /* prevents unexpected clipping due to line-height */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.discord-link:hover {
+  color: #7289da;
+  transform: scale(1.08);
+}
+
+
+.member-name {
+  font-family: "Source Code Pro", monospace;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 2rem;
+}
+ 
+/* Match hover border like member cards */
+.hero-content {
+  display: inline-block;
+  background: transparent;
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: 18px;
+  padding: 1.5rem 2rem;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  color:var(--text-gray); 
+}
+
+.hero-content:hover {
+  transform: translateY(-4px);
+  border-color: rgba(168, 85, 247, 0.3); /* same purple-pink glow */
+}
+
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#sarthak {
+  color: rgba(255, 255, 255, 0.01);
+  font-size: large;
+
+}
+
+  </style>
+</head>
+<body>
+  
+ 
+  
+    <!-- HERO (centered title + tagline, no border/line below) -->
+     <br>
+     <br>
+     <br>
+     <br>
+     <br>
+     
+    <section class="hero" aria-labelledby="store-hero">
+      <h1 id="store-hero">Stryde Bazaar</h1>
+      <p class="tagline">Customize your experience with exclusive cosmetics.</p>
+      <a class="cta">Under Development</a>
+    </section>
+
+    <div class="divider" aria-hidden="true"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <ul class="nav-links">
+                <li><a id="Home" href="index.html">Home</a></li>
+                <li><a id="Discord" href="https://discord.gg/Qm6tnQ4aFn" target="_blank">Discord</a></li>
+                <li><a id="Store" href="store.html" style="color: #EC4899;">Bazaar</a></li>
+                <li><a id="Features" href="contact.html">Connect</a></li>
+                <li><a id="Team" href="team.html">Team</a></li>
+            </ul>
+        </div>
+        <div class="country-flag">
+  <img src="https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg" alt="India" />
+  <span></span>
+</div>
+
+    </nav>
+
+    <!-- TABS -->
+    <!-- <div style="text-align:center; margin-top:8px;">
+      <div class="tabs" role="tablist" aria-label="Store categories">
+        <button class="tab active" data-tab="cloaks">Cloaks</button>
+        <button class="tab" data-tab="emotes">Emotes</button>
+        <button class="tab" data-tab="bandanas">Bandanas</button>
+        <button class="tab" data-tab="wings">Wings</button>
+        <button class="tab" data-tab="other">Fists</button>
+        <button class="tab" data-tab="other">Items</button>
+        <button class="tab" data-tab="other">Effects</button>
+        <button class="tab" data-tab="other">Shield</button>
+        <button class="tab" data-tab="other">Auras</button>
+        <button class="tab" data-tab="other">Other</button>
+      </div>
+    </div>
+
+     CATALOG
+ <section id="catalog">
+       Cloaks 
+      <div class="grid" data-category="cloaks">
+        
+        <div class="item-card" data-id="cloak-aurora" data-title="Potato Cloak" data-price-usd="3.99">
+          <img class="item-image" src="potatocape.png" alt="Aurora Cloak">
+          <div class="item-title">Potato Cloak</div>
+          <div class="item-desc">Classic potato cloak.</div>
+          <div class="price-row">
+            <div class="price-usd">$3.99</div>
+            <div class="price-inr" data-usd="3.99"> (~₹— )</div>
+          </div>
+          <button class="buy-btn" aria-label="Buy Aurora Cloak">Add to Cart</button>
+        </div> -->
+
+        <!-- <div class="item-card" data-id="cloak-nova" data-title="Nova Cloak" data-price-usd="5.99">
+          <img class="item-image" src="https://images.unsplash.com/photo-1549880338-65ddcdfd017b?q=80&w=900&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Nova Cloak">
+          <div class="item-title">Nova Cloak</div>
+          <div class="item-desc">Bold comet-streak cloak with glow effect.</div>
+          <div class="price-row">
+            <div class="price-usd">$5.99</div>
+            <div class="price-inr" data-usd="5.99"> (~₹— )</div>
+          </div>
+          <button class="buy-btn">Add to Cart</button>
+        </div> -->
+
+        <!-- <div class="item-card" data-id="cloak-shadow" data-title="Shadow Cloak" data-price-usd="2.49">
+          <img class="item-image" src="https://picsum.photos/seed/cloak1/600/400" alt="Shadow Cloak">
+          <div class="item-title">Shadow Cloak</div>
+          <div class="item-desc">Stealthy dark cloak for low-profile looks.</div>
+          <div class="price-row">
+            <div class="price-usd">$2.49</div>
+            <div class="price-inr" data-usd="2.49"> (~₹— )</div>
+          </div>
+          <button class="buy-btn">Add to Cart</button>
+        </div>
+      </div>
+
+      Emotes 
+      <div class="grid" data-category="emotes" style="display:none;">
+        <div class="item-card" data-id="emote-dance" data-title="Victory Dance" data-price-usd="1.49">
+          <img class="item-image" src="https://images.unsplash.com/photo-1520975913550-8477a7b4d2d3?q=80&w=900&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Victory Dance">
+          <div class="item-title">Victory Dance</div>
+          <div class="item-desc">Exclusive short emote animation.</div>
+          <div class="price-row">
+            <div class="price-usd">$1.49</div>
+            <div class="price-inr" data-usd="1.49"> (~₹— )</div>
+          </div>
+          <button class="buy-btn">Add to Cart</button>
+        </div>
+
+        <div class="item-card" data-id="emote-cheer" data-title="Cheer" data-price-usd="0.99">
+          <img class="item-image" src="https://picsum.photos/seed/emote1/600/400" alt="Cheer Emote">
+          <div class="item-title">Cheer</div>
+          <div class="item-desc">Quick cheer emote for team moments.</div>
+          <div class="price-row">
+            <div class="price-usd">$0.99</div>
+            <div class="price-inr" data-usd="0.99"> (~₹— )</div>
+          </div>
+          <button class="buy-btn">Add to Cart</button>
+        </div>
+      </div>
+
+       Bandanas 
+      <div class="grid" data-category="bandanas" style="display:none;">
+        <div class="item-card" data-id="bandana-royal" data-title="Royal Bandana" data-price-usd="0.99">
+          <img class="item-image" src="https://images.unsplash.com/photo-1549989477-8e7b9b1f8e64?q=80&w=900&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Royal Bandana">
+          <div class="item-title">Royal Bandana</div>
+          <div class="item-desc">Stylish bandana with embroidered logo.</div>
+          <div class="price-row">
+            <div class="price-usd">$0.99</div>
+            <div class="price-inr" data-usd="0.99"> (~₹— )</div>
+          </div>
+          <button class="buy-btn">Add to Cart</button>
+        </div>
+
+        <div class="item-card" data-id="bandana-stealth" data-title="Stealth Bandana" data-price-usd="0.49">
+          <img class="item-image" src="https://picsum.photos/seed/bandana1/600/400" alt="Stealth Bandana">
+          <div class="item-title">Stealth Bandana</div>
+          <div class="item-desc">Minimal matte bandana for subtle style.</div>
+          <div class="price-row">
+            <div class="price-usd">$0.49</div>
+            <div class="price-inr" data-usd="0.49"> (~₹— )</div>
+          </div>
+          <button class="buy-btn">Add to Cart</button>
+        </div>
+      </div>
+
+       Wings
+      <div class="grid" data-category="wings" style="display:none;">
+        <div class="item-card" data-id="wings-ethereal" data-title="Ethereal Wings" data-price-usd="6.99">
+          <img class="item-image" src="https://images.unsplash.com/photo-1511988617509-a57c8a288659?q=80&w=900&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Ethereal Wings">
+          <div class="item-title">Ethereal Wings</div>
+          <div class="item-desc">Animated translucent wings with particle trail.</div>
+          <div class="price-row">
+            <div class="price-usd">$6.99</div>
+            <div class="price-inr" data-usd="6.99"> (~₹— )</div>
+          </div>
+          <button class="buy-btn">Add to Cart</button>
+        </div>
+      </div>
+
+       Other 
+      <div class="grid" data-category="other" style="display:none;">
+        <div class="item-card" data-id="misc-tag" data-title="Custom Tag" data-price-usd="0.79">
+          <img class="item-image" src="https://picsum.photos/seed/tag1/600/400" alt="Custom Tag">
+          <div class="item-title">Custom Tag</div>
+          <div class="item-desc">Unique prefix/suffix tag shown in-game.</div>
+          <div class="price-row">
+            <div class="price-usd">$0.79</div>
+            <div class="price-inr" data-usd="0.79"> (~₹— )</div>
+          </div>
+          <button class="buy-btn">Add to Cart</button>
+        </div>
+      </div>
+
+    </section>
+
+    <div style="height:120px;"></div>
+  </div>
+
+   CART BUTTON 
+  <button id="openCart" class="cart-btn" aria-label="Open cart">Cart <span id="cartCount" class="cart-count">0</span></button>
+
+  CART PANEL (REUSABLE HTML START)
+  COPY from here to reuse the cart panel on other pages 
+  <aside id="cartPanel" class="cart-panel hidden" aria-hidden="true">
+    <div class="cart-header">
+      <strong>Cart</strong>
+      <button id="closeCart" title="Close" style="background:transparent;border:0;color:var(--muted);cursor:pointer">✕</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+       cart items injected here 
+    </div>
+
+    <div class="cart-footer">
+      <div class="total-row"><div>Total (USD)</div><div id="totalUSD">$0.00</div></div>
+      <div class="total-row"><div>Total (INR)</div><div id="totalINR">₹0.00</div></div>
+      <button id="checkoutBtn" class="checkout-btn">Checkout</button>
+    </div>
+  </aside>
+   COPY until here to reuse the cart panel on other pages 
+   CART PANEL (REUSABLE HTML END) 
+
+  <PURCHASE SUCCESS MODAL (REUSABLE HTML START) 
+   COPY from here to reuse the purchase modal on other pages 
+  <div id="modalOverlay" style="display:none;" class="overlay" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true">
+      <h3 id="modalTitle">Purchase Successful ✅</h3>
+      <p id="modalMessage">Thanks! Your purchase was completed. The items will be applied to your account shortly.</p>
+      <div class="glow-success">Success</div>
+      <div style="margin-top:14px;">
+        <button id="modalClose" class="buy-btn" style="border:none; margin-top:6px;">Close</button>
+      </div>
+    </div>
+  </div> -->
+  <!-- PURCHASE SUCCESS MODAL (REUSABLE HTML END) -->
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+  <!-- Stryde Footer (self-contained) -->
+<footer class="footer-credit">
+  <style>
+    :root {
+      --primary-purple: #8B5CF6;
+      --secondary-pink: #EC4899;
+      --text-white: #FFFFFF;
+      --accent-gradient: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
+    }
+
+    .footer-credit {
+      text-align: center;
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 500;
+      padding: 2rem 1rem;
+      background: rgba(255, 255, 255, 0.01);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      margin-top: 2rem;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .footer-credit a {
+      color: var(--primary-purple);
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 1.5rem;
+      transition: color 0.3s ease, transform 0.3s ease;
+      display: inline-block;
+    }
+
+    .footer-credit a:hover {
+      color: var(--secondary-pink);
+      transform: translateY(-3px);
+    }
+
+    .footer-credit img {
+      width: 22px;
+      height: 15px;
+      vertical-align: middle;
+      border-radius: 2px;
+      margin: 0 4px;
+    }
+
+    .footer-credit .heart {
+      color: var(--secondary-pink);
+      display: inline-block;
+      animation: pulse-heart 1.6s infinite ease-in-out;
+    }
+
+    @keyframes pulse-heart {
+      0%, 100% { transform: scale(1); opacity: 0.9; }
+      50% { transform: scale(1.25); opacity: 1; }
+    }
+  </style>
+
+  <p>&copy; 2025 Stryde Client. All rights reserved.</p>
+
+  <div style="margin: 1rem 0;">
+    <a href="https://discord.gg/mrUxXkG5" target="_blank" aria-label="Discord">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24">
+        <path d="M20.317 4.369a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.444.864-.608 1.248a18.265 18.265 0 0 0-5.487 0 12.47 12.47 0 0 0-.617-1.248.07.07 0 0 0-.079-.037 19.736 19.736 0 0 0-4.885 1.515.064.064 0 0 0-.03.027C2.198 9.129 1.528 13.722 1.838 18.273a.08.08 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.055.077.077 0 0 0 .084-.027c.462-.63.873-1.295 1.226-1.994a.077.077 0 0 0-.041-.104c-.652-.246-1.27-.549-1.859-.91a.078.078 0 0 1-.008-.127c.124-.094.25-.19.368-.287a.077.077 0 0 1 .08-.01c3.927 1.793 8.18 1.793 12.061 0a.077.077 0 0 1 .081.009c.12.098.245.194.37.288a.078.078 0 0 1-.007.127 12.567 12.567 0 0 1-1.86.91.077.077 0 0 0-.04.104c.36.699.772 1.364 1.226 1.994a.077.077 0 0 0 .084.027 19.876 19.876 0 0 0 6.001-3.055.077.077 0 0 0 .03-.055c.5-6.644-.838-11.197-3.548-13.878a.061.061 0 0 0-.03-.028zm-11.09 9.377c-1.183 0-2.157-1.09-2.157-2.419 0-1.328.955-2.41 2.157-2.41 1.21 0 2.174 1.091 2.157 2.41 0 1.33-.955 2.419-2.157 2.419zm6.455 0c-1.183 0-2.157-1.09-2.157-2.419 0-1.328.955-2.41 2.157-2.41 1.21 0 2.174 1.091 2.157 2.41 0 1.33-.946 2.419-2.157 2.419z"/>
+      </svg>
+    </a>
+    <a href="https://github.com/strydeclient" target="_blank" aria-label="GitHub">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24">
+        <path d="M12 .5C5.6.5.5 5.6.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2.1c-3.2.7-3.9-1.5-3.9-1.5-.6-1.4-1.5-1.8-1.5-1.8-1.2-.8.1-.8.1-.8 1.3.1 2 1.3 2 1.3 1.2 2 3.1 1.4 3.8 1.1.1-.9.5-1.4.9-1.7-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.6.1-3.3 0 0 1-.3 3.3 1.2a11.3 11.3 0 0 1 6 0C17.9 5.3 19 5.6 19 5.6c.6 1.7.2 3 .1 3.3.8.8 1.2 1.9 1.2 3.1 0 4.6-2.7 5.5-5.3 5.8.5.4.9 1.1.9 2.2v3.3c0 .3.2.7.8.6a11.5 11.5 0 0 0 7.9-10.9C23.5 5.6 18.4.5 12 .5z"/>
+      </svg>
+    </a>
+    <a href="https://twitter.com/strydeclient" target="_blank" aria-label="Twitter">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24">
+        <path d="M23 2.999a9.025 9.025 0 0 1-2.357.647A4.11 4.11 0 0 0 22.393 1.6a8.83 8.83 0 0 1-2.605.999 4.404 4.404 0 0 0-7.548 3.01c0 .352.04.7.116 1.035-3.66-.188-6.911-1.964-9.08-4.667a4.421 4.421 0 0 0-.597 2.216 4.37 4.37 0 0 0 1.963 3.658 4.215 4.215 0 0 1-2-.56v.06c0 2.02 1.394 3.699 3.24 4.085a4.306 4.306 0 0 1-1.982.08c.559 1.784 2.19 3.078 4.117 3.117A8.848 8.848 0 0 1 2 19.54 12.49 12.49 0 0 0 8.29 21.5c7.547 0 11.675-6.368 11.675-11.885 0-.183-.003-.366-.01-.547A8.56 8.56 0 0 0 23 2.999z"/>
+      </svg>
+    </a>
+    <a href="https://youtube.com/@strydeclient" target="_blank" aria-label="YouTube">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24">
+        <path d="M19.6 3.2H4.4C3.08 3.2 2 4.28 2 5.6v12.8c0 1.32 1.08 2.4 2.4 2.4h15.2c1.32 0 2.4-1.08 2.4-2.4V5.6c0-1.32-1.08-2.4-2.4-2.4zM10 15.5v-7l6 3.5-6 3.5z"/>
+      </svg>
+    </a>
+  </div>
+
+  <p>Made in <img src="https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg" alt="India"> &nbsp; | &nbsp; Made with <span class="heart">❤</span> by the <strong>Stryde Team</strong></p>
+</footer>
+</footer>
+<script src="main.js"></script>
+</body>
+</html>
