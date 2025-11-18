@@ -775,3 +775,52 @@ iframe {
   -webkit-text-fill-color: transparent;
   text-align: center;
 }
+
+/* Hide toggle on desktop */
+.nav-toggle {
+    display: none;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+/* MOBILE FIX */
+@media (max-width: 768px) {
+
+    .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* Show hamburger button */
+    .nav-toggle {
+        display: block;
+        z-index: 1000;
+    }
+
+    /* Hide nav links by default */
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background: rgba(0,0,0,0.85);
+        position: absolute;
+        top: 60px;
+        right: 10px;
+        width: 200px;
+        padding: 1rem;
+        border-radius: 10px;
+    }
+
+    /* When active class is added, show them */
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+}
+
