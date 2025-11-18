@@ -841,3 +841,28 @@ iframe {
     }
 }
 
+@media (max-width: 768px) {
+    .nav-links {
+        display: flex !important;
+        flex-direction: row !important;
+        position: static !important;
+        width: auto !important;
+        background: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .nav-links li {
+        margin: 0 10px;
+    }
+
+    .nav-toggle {
+        display: none !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .country-flag {
+        display: none !important;
+    }
+}
