@@ -866,3 +866,13 @@ iframe {
         display: none !important;
     }
 }
+
+nav {
+    position: relative;
+    z-index: 5000;
+}
+
+.nav-toggle {
+    z-index: 6000;
+}
+
