@@ -824,3 +824,20 @@ iframe {
     }
 }
 
+/* Hide hamburger on desktop */
+.nav-toggle {
+    display: none;
+}
+
+/* Show hamburger ONLY on screens 768px or smaller */
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: block;
+        font-size: 2rem;
+        background: none;
+        border: none;
+        color: white;
+        cursor: pointer;
+    }
+}
+
